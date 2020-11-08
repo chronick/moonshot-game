@@ -8,10 +8,13 @@ public class GameController : MonoBehaviour {
 
     public static GameController Instance { get; protected set; }
 
-    public Universe Universe;
+    public Game Game;
+
+    public float missionTime = 10000f;
+
+    public float baseTimeSpeedMultiplier = 85f;
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
             if (Instance != null) {
                 Debug.LogError("World Controller already exists! This shouldn't happen.");
@@ -19,13 +22,17 @@ public class GameController : MonoBehaviour {
 
             Instance = this;
             
-            this.Universe = new Universe();
+            this.Game = new Game(this.missionTime);
+            this.SetTimeSpeedMultiplier(1f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         this.HealthProgressBar.SetPercentValue(50);
         this.HealthProgressBar.SetPercentValue(24);
+    }
+
+    public void SetTimeSpeedMultiplier(float multiplier) {
+        this.Game.SetTimeSpeedMultiplier(this.baseTimeSpeedMultiplier * multiplier);
     }
 }

@@ -10,20 +10,20 @@ namespace Controllers {
         // Start is called before the first frame update
         void Start() {
             this.currentTime = this.InitialTime;
-            var universe = GameController.Instance.Universe;
+            var universe = GameController.Instance.Game;
             universe.SetGlobalTime(this.currentTime);
         }
 
         // Update is called once per frame
         void Update() {
-            var universe = GameController.Instance.Universe;
-            var timeMultiplier = universe.TimeSpeedMultiplier;
+            var game = GameController.Instance.Game;
+            var timeMultiplier = game.TimeSpeedMultiplier;
             this.currentTime += (Time.deltaTime * timeMultiplier);
-            universe.SetGlobalTime(this.currentTime);
+            game.SetGlobalTime(this.currentTime);
         }
 
         public void SetTimeSpeedMultiplier(float multiplier) {
-            GameController.Instance.Universe.SetTimeSpeedMultiplier(multiplier);
+            GameController.Instance.Game.SetTimeSpeedMultiplier(multiplier);
         }
     }
 }
