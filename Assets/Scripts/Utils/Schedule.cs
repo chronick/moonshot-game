@@ -1,5 +1,5 @@
 using System;
-// using Priority_Queue;
+using Priority_Queue;
 
 namespace Utils {
     public interface IScheduleEvent {
@@ -19,33 +19,32 @@ namespace Utils {
     }
 
     public class Schedule {
-        // private readonly SimplePriorityQueue<IScheduleEvent, float> queue =
-        //     new SimplePriorityQueue<IScheduleEvent, float>();
+        private readonly SimplePriorityQueue<IScheduleEvent, float> queue =
+            new SimplePriorityQueue<IScheduleEvent, float>();
         
         public void At(float time, IScheduleEvent scheduleEvent) {
-            // this.queue.Enqueue(scheduleEvent, time);
+            this.queue.Enqueue(scheduleEvent, time);
         }
         
         public void Tick(float time) {
-            // while (this.NextTime() <= time) {
-            //     this.ExecuteNext(time);
-            // }
+            while (this.NextTime() <= time) {
+                this.ExecuteNext(time);
+            }
         }
         
         private float NextTime() {
-            // var nextTime = float.MaxValue;
-            // if (this.queue.TryFirst(out var first)) {
-            //     this.queue.TryGetPriority(first, out nextTime);
-            // }
-            //
-            // return nextTime;
-            return 0f;
+            var nextTime = float.MaxValue;
+            if (this.queue.TryFirst(out var first)) {
+                this.queue.TryGetPriority(first, out nextTime);
+            }
+            
+            return nextTime;
         }
         
         private void ExecuteNext(float time) {
-            // if (this.queue.TryDequeue(out var first)) {
-            //     first.OnEventTriggered(time);
-            // }
+            if (this.queue.TryDequeue(out var first)) {
+                first.OnEventTriggered(time);
+            }
         }
     }
 }
