@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Models;
 using UnityEngine;
+using Utils;
 
 public class GameController : MonoBehaviour {
     public ProgressBarController HealthProgressBar;
@@ -13,7 +15,13 @@ public class GameController : MonoBehaviour {
     public float missionTime = 10000f;
 
     public float baseTimeSpeedMultiplier = 85f;
-    
+
+    public ModalDialogController modalDialog;
+
+    public void OnModalClicked() {
+        Debug.Log("Modal Clicked!");
+    }
+
     void Awake()
     {
             if (Instance != null) {
@@ -24,6 +32,16 @@ public class GameController : MonoBehaviour {
             
             this.Game = new Game(this.missionTime);
             this.SetTimeSpeedMultiplier(1f);
+            
+    }
+
+    void Start() {
+        this.Game.At(100, this.DoSomething);
+    }
+
+    void DoSomething(float t) {
+        Debug.Log("Something Happened!");
+        this.modalDialog.Dialog("Something Happened!", this.OnModalClicked);
     }
 
     void Update()
