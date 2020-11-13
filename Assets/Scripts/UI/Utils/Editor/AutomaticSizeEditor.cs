@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(AutomaticSize))]
-public class AutomaticSizeEditor : Editor {
-    public override void OnInspectorGUI() {
-        DrawDefaultInspector();
+namespace UI.Utils.Editor {
+    [CustomEditor(typeof(AutomaticSize))]
+    public class AutomaticSizeEditor : UnityEditor.Editor {
+        public override void OnInspectorGUI() {
+            this.DrawDefaultInspector();
 
-        if (GUILayout.Button("Recalc size")) {
-            ((AutomaticSize)target).AdjustSize();
+            if (GUILayout.Button("Recalc size")) {
+                ((AutomaticSize)this.target).AdjustSize();
+            }
         }
     }
 }

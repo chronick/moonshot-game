@@ -1,9 +1,7 @@
-﻿﻿using System;
-using Controllers;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI {
+namespace Controllers.Display {
     public class TimeDisplayController : MonoBehaviour {
 
         public Text currentTimeDisplay;

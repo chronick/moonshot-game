@@ -1,29 +1,31 @@
 ﻿using UnityEngine;
 
-public class AutomaticSize : MonoBehaviour {
-    public enum SizeDirection {
-        VERTICAL,
-        HORIZONTAL
-    }
-
-    public float childSize = 35f;
-
-    public SizeDirection direction = SizeDirection.VERTICAL;
-
-    // Start is called before the first frame update
-    private void Start() {
-        this.AdjustSize();
-    }
-
-    public void AdjustSize() {
-        var sizeDelta = this.GetComponent<RectTransform>().sizeDelta;
-        var finalSize = this.transform.childCount * this.childSize;
-        if (this.direction == SizeDirection.VERTICAL) {
-            sizeDelta.y = finalSize; 
+namespace UI.Utils {
+    public class AutomaticSize : MonoBehaviour {
+        public enum SizeDirection {
+            VERTICAL,
+            HORIZONTAL
         }
-        else {
-            sizeDelta.x = finalSize;
+
+        public float childSize = 35f;
+
+        public SizeDirection direction = SizeDirection.VERTICAL;
+
+        // Start is called before the first frame update
+        private void Start() {
+            this.AdjustSize();
         }
-        this.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+
+        public void AdjustSize() {
+            var sizeDelta = this.GetComponent<RectTransform>().sizeDelta;
+            var finalSize = this.transform.childCount * this.childSize;
+            if (this.direction == SizeDirection.VERTICAL) {
+                sizeDelta.y = finalSize; 
+            }
+            else {
+                sizeDelta.x = finalSize;
+            }
+            this.GetComponent<RectTransform>().sizeDelta = sizeDelta;
+        }
     }
 }
