@@ -1386,7 +1386,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1578186648}
   - component: {fileID: 1578186647}
-  - component: {fileID: 1578186649}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -1424,18 +1423,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1578186649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578186646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aff3274b5b4ba2a826e1aff258bd37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1663364705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1723,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1194711354}
     m_Modifications:
+    - target: {fileID: 5046372539345659304, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.g
+      value: 0.75294125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.b
+      value: 0.83921576
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5046372539345659318, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
       propertyPath: m_Color.r
       value: 0.1782218
@@ -2147,6 +2154,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1037333468}
     m_Modifications:
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.g
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.b
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046372539345659317, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5046372539345659318, guid: 8e2764a7b872e4578a7636019b83f113, type: 3}
       propertyPath: m_Color.b
       value: 0.1745283

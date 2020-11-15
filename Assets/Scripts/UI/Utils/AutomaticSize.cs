@@ -20,11 +20,12 @@ namespace UI.Utils {
             var sizeDelta = this.GetComponent<RectTransform>().sizeDelta;
             var finalSize = this.transform.childCount * this.childSize;
             if (this.direction == SizeDirection.VERTICAL) {
-                sizeDelta.y = finalSize; 
+                sizeDelta.y = finalSize;
             }
             else {
                 sizeDelta.x = finalSize;
             }
+
             this.GetComponent<RectTransform>().sizeDelta = sizeDelta;
         }
     }

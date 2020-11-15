@@ -33,11 +33,13 @@ namespace Utils {
         public InGameDateTime(float secondSinceEpoch) {
             this.seconds = secondSinceEpoch;
         }
-        
+
         public int Day => InGameDateTimeConversions.Day(this.seconds);
         public int Hour => InGameDateTimeConversions.Hour(this.seconds);
         public int Minute => InGameDateTimeConversions.Minute(this.seconds);
         public int Second => InGameDateTimeConversions.Second(this.seconds);
+
+        #region IComparable<InGameDateTime> Members
 
         public int CompareTo(InGameDateTime other) {
             if (other == null) {
@@ -47,6 +49,10 @@ namespace Utils {
             return this.seconds.CompareTo(other.seconds);
         }
 
+        #endregion
+
+        #region IEquatable<InGameDateTime> Members
+
         public bool Equals(InGameDateTime other) {
             if (other == null) {
                 return false;
@@ -54,5 +60,7 @@ namespace Utils {
 
             return this.seconds.Equals(other.seconds);
         }
+
+        #endregion
     }
 }

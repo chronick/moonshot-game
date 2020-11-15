@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 namespace Menus {
     public class MainMenuController : MonoBehaviour {
-        private AsyncOperation sceneLoading;
         public GameObject mainMenu;
         public GameObject loadingProgressContainer;
         public ProgressBarController loadingProgress;
+        private AsyncOperation sceneLoading;
 
 
         // Start is called before the first frame update
@@ -18,7 +18,7 @@ namespace Menus {
 
         // Update is called once per frame
         private void Update() {
-            if (this.sceneLoading != null) {
+            if (this.sceneLoading != null && !this.sceneLoading.isDone) {
                 this.loadingProgress.SetValue(this.sceneLoading.progress);
             }
         }
@@ -28,7 +28,7 @@ namespace Menus {
             this.sceneLoading.allowSceneActivation = true;
             this.mainMenu.SetActive(false);
             this.loadingProgressContainer.SetActive(true);
-            this.loadingProgress.MaxValue = 1f;
+            this.loadingProgress.maxValue = 1f;
         }
     }
 }
