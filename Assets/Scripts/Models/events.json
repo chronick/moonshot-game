@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "message": "Oh no! An asteroid hit the hull. Hull integrity is down.",
+      "actions": [
+        {
+          "message": "Acknowledged",
+          "result": [
+            ["hull", -1],
+            ["shields", -1]
+          ]
+        }
+      ]
+    }
+  ]
+}

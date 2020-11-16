@@ -18,15 +18,18 @@ namespace Models {
     public class Game {
         private readonly Schedule schedule = new Schedule();
 
+        public readonly Ship Ship;
+
         private Action<GameEndData> cbOnGameEnded;
         private Action<float> cbTimeSpeedMultiplierChanged;
+        public bool IsEnded;
+        public bool IsPaused;
+        private float previousTimeSpeedMultiplier = 1f;
 
         public Game(float missionTime) {
             this.MissionTime = missionTime;
             this.Ship = new Ship(1000);
         }
-
-        public readonly Ship Ship;
 
         public float GlobalTime { get; protected set; }
         public float TimeSpeedMultiplier { get; protected set; } = 1f;
@@ -46,7 +49,7 @@ namespace Models {
         public void Tick(float time) {
             this.GlobalTime = time;
             this.schedule.Tick(time);
-            
+
             // Game Loss condition
             if (!this.Ship.IsAlive()) {
                 this.LoseGame("Ship has died somehow.");
@@ -60,6 +63,7 @@ namespace Models {
         }
 
         public void SetTimeSpeedMultiplier(float multiplier) {
+            this.previousTimeSpeedMultiplier = this.TimeSpeedMultiplier;
             this.TimeSpeedMultiplier = multiplier;
             this.cbTimeSpeedMultiplierChanged?.Invoke(this.TimeSpeedMultiplier);
         }
@@ -72,7 +76,29 @@ namespace Models {
             this.cbOnGameEnded += cb;
         }
 
+        public void Resume() {
+            if (!this.IsPaused) {
+                return;
+            }
+
+            this.IsPaused = false;
+
+            this.SetTimeSpeedMultiplier(this.previousTimeSpeedMultiplier);
+        }
+
+        public void Pause() {
+            if (this.IsPaused) {
+                return;
+            }
+
+            this.IsPaused = true;
+
+            this.SetTimeSpeedMultiplier(0);
+        }
+
         private void EndGame(GameEndData data) {
+            this.IsEnded = true;
+
             if (this.cbOnGameEnded != null) {
                 this.cbOnGameEnded.Invoke(data);
                 return;

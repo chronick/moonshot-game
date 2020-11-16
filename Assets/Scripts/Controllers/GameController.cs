@@ -1,10 +1,13 @@
-﻿using Models;
+﻿using System.Collections.Generic;
+using Models;
 using UI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Utils;
 
 namespace Controllers {
-    public class GameController : MonoBehaviour {
+    public class GameController : MonoBehaviour, IGameMessageDelegate {
         public ProgressBarController HealthProgressBar;
 
         public float missionTime = 10000f;
@@ -15,7 +18,7 @@ namespace Controllers {
 
         public Game Game;
 
-        private bool isGameEnd = false;
+        private bool isGameEnd;
 
         public static GameController Instance { get; protected set; }
 
@@ -29,40 +32,56 @@ namespace Controllers {
             this.Game = new Game(this.missionTime);
             this.Game.RegisterOnGameEndCallback(this.OnGameEnd);
             this.SetTimeSpeedMultiplier(1f);
+
+            this.modalDialog.RegisterOnOpenCallback(this.OnModalDialogOpen);
+            this.modalDialog.RegisterOnCloseCallback(this.OnModalDialogClose);
         }
 
+
         private void Start() {
-            // this.HealthProgressBar.SetValue(200);
+            this.HealthProgressBar.maxValue = this.Game.Ship.Hull;
+
+            var someTime = 100f;
+            this.Game.At(someTime, new AsteroidHullEvent(this, this.Game.Ship, 100));
         }
 
         private void Update() {
-            if (this.isGameEnd) return;
-            
+            if (this.Game.IsEnded || this.Game.IsPaused) {
+                return;
+            }
+
+            this.HealthProgressBar.SetValue(this.Game.Ship.Hull);
+
             var currentTime = this.Game.GlobalTime + Time.deltaTime * this.Game.TimeSpeedMultiplier;
             this.Game.Tick(currentTime);
         }
 
+        private void OnDestroy() {
+            this.modalDialog.UnregisterOnOpenCallback(this.OnModalDialogOpen);
+            this.modalDialog.UnregisterOnCloseCallback(this.OnModalDialogClose);
+        }
+
+        public void SendActionableMessage(string message, Dictionary<string, UnityAction> actions) {
+            this.modalDialog.Dialog(message, actions);
+        }
+
+        private void OnModalDialogOpen() {
+            this.Game.Pause();
+        }
+
+        private void OnModalDialogClose() {
+            this.Game.Resume();
+        }
+
         private void OnGameEnd(GameEndData data) {
-            this.isGameEnd = true;
             if (data.IsWin) {
-                Debug.Log("You Won the game!");
                 this.modalDialog.Dialog("You Won the game!", () => SceneManager.LoadScene("Scenes/MainMenu"));
             }
 
             else {
-                Debug.Log("You Lost the game!");
                 this.modalDialog.Dialog($"You Lost the game! Reason: {data.Reason}",
                     () => SceneManager.LoadScene("Scenes/MainMenu"));
             }
-        }
-
-        public void OnModalClicked() {
-            Debug.Log("Modal Clicked!");
-        }
-
-        private void DoSomething(float t) {
-            Debug.Log("Something Happened!");
-            this.modalDialog.Dialog("Something Happened!", this.OnModalClicked);
         }
 
         public void SetTimeSpeedMultiplier(float multiplier) {
