@@ -4,10 +4,10 @@ using Utils;
 
 namespace Models {
     public class AsteroidHullEvent : IScheduleEvent {
+        private readonly float amount;
         private readonly string message = "Oh no! An asteroid hit the hull! There was some damage.";
         private readonly IGameMessageDelegate messageDelegate;
         private readonly Ship ship;
-        private readonly float amount;
 
         public AsteroidHullEvent(IGameMessageDelegate messageDelegate, Ship ship, float amount) {
             this.messageDelegate = messageDelegate;
@@ -15,10 +15,14 @@ namespace Models {
             this.amount = amount;
         }
 
+        #region IScheduleEvent Members
+
         public void OnEventTriggered(float time) {
             this.messageDelegate.SendActionableMessage(this.message,
                 new Dictionary<string, UnityAction> {{"OK", this.OnAcknowledge}});
         }
+
+        #endregion
 
         private void OnAcknowledge() {
             this.ship.Hull -= this.amount;
