@@ -22,7 +22,12 @@ namespace Utils {
         #endregion
     }
 
-    public class Schedule {
+    public interface ISchedule {
+        void At(float time, IScheduleEvent scheduleEvent);
+        void Tick(float time);
+    }
+
+    public class Schedule : ISchedule {
         private readonly SimplePriorityQueue<IScheduleEvent, float> queue =
             new SimplePriorityQueue<IScheduleEvent, float>();
 

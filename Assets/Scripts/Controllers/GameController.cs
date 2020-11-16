@@ -41,8 +41,11 @@ namespace Controllers {
         private void Start() {
             this.HealthProgressBar.maxValue = this.Game.Ship.Hull;
 
-            var someTime = 100f;
-            this.Game.At(someTime, new AsteroidHullEvent(this, this.Game.Ship, 100));
+            for (int i = 0; i < 10; i++) {
+                var someTime = Random.Range(100, this.missionTime);
+                var damage = Random.Range(20, 250);
+                this.Game.At(someTime, new AsteroidHullEvent(this, this.Game.Ship, damage)) ;
+            }
         }
 
         private void Update() {
@@ -79,7 +82,7 @@ namespace Controllers {
             }
 
             else {
-                this.modalDialog.Dialog($"You Lost the game! Reason: {data.Reason}",
+                this.modalDialog.Dialog($"You Lost the game!\nReason: {data.Reason}",
                     () => SceneManager.LoadScene("Scenes/MainMenu"));
             }
         }

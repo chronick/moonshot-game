@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 using Utils;
 
@@ -15,14 +16,11 @@ namespace Models {
             this.amount = amount;
         }
 
-        #region IScheduleEvent Members
-
         public void OnEventTriggered(float time) {
+            Debug.Log("Event Triggered!");
             this.messageDelegate.SendActionableMessage(this.message,
                 new Dictionary<string, UnityAction> {{"OK", this.OnAcknowledge}});
         }
-
-        #endregion
 
         private void OnAcknowledge() {
             this.ship.Hull -= this.amount;
@@ -56,4 +54,5 @@ namespace Models {
             return true;
         }
     }
+
 }
