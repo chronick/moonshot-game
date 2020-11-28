@@ -1,26 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Controllers.Minigames.AsteroidDodge {
     public class AsteroidSpawner : MonoBehaviour {
         public List<GameObject> asteroidPrefabs;
 
         public Vector3 spread;
-        public int hazardCount;
+        public int wavesCount = 2;
+        public int hazardCount = 10;
         public float startTime;
-        public float waveWait;
-        public float spawnWait;
-        public float hazardSpeed;
-        public float hazardTumble;
+        public float waveWait = 5f;
+        public float spawnWait = 0.5f;
+        public float hazardSpeed = 2f;
+        public float hazardTumble = 0.5f;
+
+        private Action cbOnWavesCompleted;
 
         // Use this for initialization
         private void Start() {
             this.StartCoroutine(this.SpawnWaves());
         }
-
-        // Update is called once per frame
-        private void Update() { }
 
         public void OnDrawGizmos() {
             Gizmos.DrawWireCube(this.transform.position, new Vector3(this.spread.x, this.spread.y, this.spread.z));
@@ -28,7 +30,7 @@ namespace Controllers.Minigames.AsteroidDodge {
 
         private IEnumerator SpawnWaves() {
             yield return new WaitForSeconds(this.startTime);
-            while (true) {
+            for (var j = 0; j < this.wavesCount; j++) {
                 for (var i = 0; i < this.hazardCount; i++) {
                     var spawnPosition = new Vector2(Random.Range(-this.spread.x / 2f, this.spread.x / 2f),
                         Random.Range(-this.spread.y / 2f, this.spread.y / 2f));
@@ -46,6 +48,16 @@ namespace Controllers.Minigames.AsteroidDodge {
 
                 yield return new WaitForSeconds(this.waveWait);
             }
+            
+            this.cbOnWavesCompleted?.Invoke();
+        }
+
+        public void RegisterOnWavesCompletedCallback(Action cb) {
+            this.cbOnWavesCompleted += cb;
+        }
+
+        public void UnregisterOnWavesCompletedCallback(Action cb) {
+            this.cbOnWavesCompleted -= cb;
         }
     }
 }

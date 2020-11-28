@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace Controllers.Minigames.SatelliteDodge {
     public class GameController : MonoBehaviour {
-
         public Transform origin;
         public GameObject obstaclePrefab;
+        
+        public GoalController goalController;
 
         public float minRadius = 20f;
         public int orbitCount = 8;
@@ -14,11 +15,13 @@ namespace Controllers.Minigames.SatelliteDodge {
         public int maxObstaclesPerOrbit = 50;
 
         public void Start() {
+            // Register Game End callbacks
+            this.goalController.RegisterOnGoalEnteredCallback(this.OnGoalEntered);
+
             // populate each orbit
-            for (int i = 0; i < this.orbitCount; i++) {
-                
+            for (var i = 0; i < this.orbitCount; i++) {
                 // Add a random number of obstacles
-                for (int j = 0; j < Random.Range(this.minObstaclesPerOrbit, this.maxObstaclesPerOrbit); j++) {
+                for (var j = 0; j < Random.Range(this.minObstaclesPerOrbit, this.maxObstaclesPerOrbit); j++) {
                     var obstacleGO = Instantiate(this.obstaclePrefab);
                     var circleComponent = obstacleGO.GetComponent<MoveInCircle>();
 
@@ -29,6 +32,10 @@ namespace Controllers.Minigames.SatelliteDodge {
                     circleComponent.speed = 2f / Mathf.Sqrt(radius);
                 }
             }
+        }
+
+        private void OnGoalEntered() {
+            Main_Game.GameController.Instance.ResumeMainGame();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Controllers.Main_Game.Display {
     [RequireComponent(typeof(ParticleSystem))]
@@ -6,6 +7,10 @@ namespace Controllers.Main_Game.Display {
         // Start is called before the first frame update
         private void Start() {
             GameController.Instance.Game.RegisterTimeSpeedMultiplierChangedCallback(this.OnTimeSpeedMultiplierChanged);
+        }
+
+        public void OnDestroy() {
+            GameController.Instance.Game.UnregisterTimeSpeedMultiplierChangedCallback(this.OnTimeSpeedMultiplierChanged);
         }
 
         private void OnTimeSpeedMultiplierChanged(float multiplier) {

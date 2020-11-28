@@ -403,6 +403,7 @@ MonoBehaviour:
   asteroidPrefabs:
   - {fileID: 179522, guid: 4b85a87f486ec420396a7211bf0e8b70, type: 3}
   spread: {x: 10, y: 0, z: 0}
+  wavesCount: 1
   hazardCount: 10
   startTime: 0
   waveWait: 5
@@ -438,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5379a4c65552543239992e77d90b530d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asteroidSpawner: {fileID: 536338348}
 --- !u!4 &790020465
 Transform:
   m_ObjectHideFlags: 0
@@ -739,6 +741,8 @@ MonoBehaviour:
   thrust: 0.15
   mainEngines: {fileID: 3650140604230690483}
   reverseEngines: {fileID: 1283552047}
+  damageTimeout: 0.5
+  damageMultiplier: 10
 --- !u!1 &1842747094
 GameObject:
   m_ObjectHideFlags: 0

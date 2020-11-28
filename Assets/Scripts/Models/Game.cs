@@ -62,14 +62,18 @@ namespace Models {
             }
         }
 
-        public void SetTimeSpeedMultiplier(float multiplier) {
-            this.previousTimeSpeedMultiplier = this.TimeSpeedMultiplier;
+        public void SetTimeSpeedMultiplier(float multiplier, bool overridePrevious = false) {
+            this.previousTimeSpeedMultiplier = overridePrevious ? multiplier : this.TimeSpeedMultiplier;
             this.TimeSpeedMultiplier = multiplier;
             this.cbTimeSpeedMultiplierChanged?.Invoke(this.TimeSpeedMultiplier);
         }
 
         public void RegisterTimeSpeedMultiplierChangedCallback(Action<float> cb) {
             this.cbTimeSpeedMultiplierChanged += cb;
+        }
+        
+        public void UnregisterTimeSpeedMultiplierChangedCallback(Action<float> cb) {
+            this.cbTimeSpeedMultiplierChanged -= cb;
         }
 
         public void RegisterOnGameEndCallback(Action<GameEndData> cb) {
