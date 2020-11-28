@@ -45,6 +45,10 @@ namespace UI {
         public void Dialog(string message, UnityAction onConfirm) {
             this.Dialog(message, new Dictionary<string, UnityAction> {{"OK", onConfirm}});
         }
+        
+        public void Dialog(string message) {
+            this.Dialog(message, new Dictionary<string, UnityAction> {{"OK", null}});
+        }
 
         public void RegisterOnOpenCallback(Action cb) {
             this.cbOnOpen += cb;

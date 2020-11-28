@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Controllers.Minigames.AsteroidDodge {
+    public class AsteroidSpawner : MonoBehaviour {
+        public List<GameObject> asteroidPrefabs;
+
+        public Vector3 spread;
+        public int hazardCount;
+        public float startTime;
+        public float waveWait;
+        public float spawnWait;
+        public float hazardSpeed;
+        public float hazardTumble;
+
+        // Use this for initialization
+        private void Start() {
+            this.StartCoroutine(this.SpawnWaves());
+        }
+
+        // Update is called once per frame
+        private void Update() { }
+
+        public void OnDrawGizmos() {
+            Gizmos.DrawWireCube(this.transform.position, new Vector3(this.spread.x, this.spread.y, this.spread.z));
+        }
+
+        private IEnumerator SpawnWaves() {
+            yield return new WaitForSeconds(this.startTime);
+            while (true) {
+                for (var i = 0; i < this.hazardCount; i++) {
+                    var spawnPosition = new Vector2(Random.Range(-this.spread.x / 2f, this.spread.x / 2f),
+                        Random.Range(-this.spread.y / 2f, this.spread.y / 2f));
+                    var prefab = this.asteroidPrefabs[Random.Range(0, this.asteroidPrefabs.Count)];
+                    var go = Instantiate(prefab, this.transform);
+                    go.transform.localPosition = spawnPosition;
+                    go.transform.localScale = Vector3.one * Random.Range(1f, 1f);
+
+                    var rb = go.GetComponent<Rigidbody>();
+                    rb.velocity = Vector3.down * this.hazardSpeed;
+                    rb.angularVelocity = Random.insideUnitSphere * this.hazardTumble;
+
+                    yield return new WaitForSeconds(this.spawnWait);
+                }
+
+                yield return new WaitForSeconds(this.waveWait);
+            }
+        }
+    }
+}

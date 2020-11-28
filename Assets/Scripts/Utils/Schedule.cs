@@ -2,9 +2,11 @@ using System;
 using Priority_Queue;
 
 namespace Utils {
-    public interface IScheduleEvent {
-        void OnEventTriggered(float time);
+    public interface IEvent<T> {
+        void OnEventTriggered(T arg);
     }
+    
+    public interface IScheduleEvent : IEvent<float> { }
 
     public class ActionScheduleEvent : IScheduleEvent {
         private readonly Action<float> cb;
