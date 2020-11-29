@@ -37,7 +37,10 @@ namespace UI {
                 button.GetComponentInChildren<Text>().text = action.Key;
                 // Probably don't need to do this but no harm I suppose
                 button.onClick.RemoveAllListeners();
-                button.onClick.AddListener(action.Value);
+                if (action.Value != null) {
+                    button.onClick.AddListener(action.Value);
+                }
+
                 button.onClick.AddListener(this.Close);
             }
         }
@@ -45,7 +48,7 @@ namespace UI {
         public void Dialog(string message, UnityAction onConfirm) {
             this.Dialog(message, new Dictionary<string, UnityAction> {{"OK", onConfirm}});
         }
-        
+
         public void Dialog(string message) {
             this.Dialog(message, new Dictionary<string, UnityAction> {{"OK", null}});
         }

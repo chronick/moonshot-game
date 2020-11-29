@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AsteroidDodge.unity
     guid: aa7ba4034d3b3492e89c902f0ec8fa49
+  - enabled: 1
+    path: Assets/Scenes/MoonLanding.unity
+    guid: cfc43104767314d5d9a7158d9af1943d
   m_configObjects: {}

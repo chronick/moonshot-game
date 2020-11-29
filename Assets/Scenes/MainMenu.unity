@@ -199,6 +199,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3616132522810115422, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
   m_PrefabInstance: {fileID: 2078248985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &375498176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3616132522264338921, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
+  m_PrefabInstance: {fileID: 2078248985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &375498178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375498176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b9654c4a9c44c4bb10071c019020be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 846506102}
 --- !u!1 &487169488
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +252,6 @@ MonoBehaviour:
   mainUIContainer: {fileID: 370064796}
   healthProgressContainer: {fileID: 1095755602}
   timelineDisplayContainer: {fileID: 81522810}
-  healthProgressBar: {fileID: 846506102}
   loadingProgressContainer: {fileID: 1599335841}
   loadingProgress: {fileID: 1378647730}
 --- !u!4 &487169490
@@ -259,7 +276,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3616132522264338920, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
   m_PrefabInstance: {fileID: 2078248985}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 375498176}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c85530b877b9b4c92a38115da3f28a79, type: 3}
@@ -450,12 +467,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1015,7 +1032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1899306750
@@ -1281,6 +1298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Modal Dialog
       objectReference: {fileID: 0}
+    - target: {fileID: 5123711034131619707, guid: b26d8e39e6c55478cb3848cf370059ed, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8015677880519457579, guid: b26d8e39e6c55478cb3848cf370059ed, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1289,16 +1310,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8015677880519457579, guid: b26d8e39e6c55478cb3848cf370059ed, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9056690191458399853, guid: b26d8e39e6c55478cb3848cf370059ed, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9056690191458399853, guid: b26d8e39e6c55478cb3848cf370059ed, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1409,14 +1422,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 487169489}
-    - target: {fileID: 3616132521620265766, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTimeSpeedMultiplier
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616132521620265766, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Controllers.Main_Game.GameController, Scripts
-      objectReference: {fileID: 0}
     - target: {fileID: 3616132521620265767, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -1441,14 +1446,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 487169489}
-    - target: {fileID: 3616132521624148198, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTimeSpeedMultiplier
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616132521624148198, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Controllers.Main_Game.GameController, Scripts
-      objectReference: {fileID: 0}
     - target: {fileID: 3616132521624148199, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -1493,14 +1490,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 487169489}
-    - target: {fileID: 3616132522035784941, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTimeSpeedMultiplier
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616132522035784941, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Controllers.Main_Game.GameController, Scripts
-      objectReference: {fileID: 0}
     - target: {fileID: 3616132522810115417, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1585,6 +1574,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3616132522810115419, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3616132522810115422, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
       propertyPath: m_Name
       value: Main UI
@@ -1613,14 +1606,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 487169489}
-    - target: {fileID: 3616132522881426293, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTimeSpeedMultiplier
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616132522881426293, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Controllers.Main_Game.GameController, Scripts
-      objectReference: {fileID: 0}
     - target: {fileID: 3616132523147653820, guid: bfb1ed352f4d04bafbc2d5bfbd7faaff, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -1714,6 +1699,10 @@ PrefabInstance:
     - target: {fileID: 794421257039548107, guid: 0b79e69f1a0494f06b3f46a8d770108f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 794421257366328648, guid: 0b79e69f1a0494f06b3f46a8d770108f, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 794421257366328650, guid: 0b79e69f1a0494f06b3f46a8d770108f, type: 3}
       propertyPath: m_Name

@@ -121,7 +121,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameController, Scripts
+        m_TargetAssemblyTypeName: Controllers.Main_Game.GameController, Scripts
         m_MethodName: SetTimeSpeedMultiplier
         m_Mode: 4
         m_Arguments:
@@ -253,7 +253,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameController, Scripts
+        m_TargetAssemblyTypeName: Controllers.Main_Game.GameController, Scripts
         m_MethodName: SetTimeSpeedMultiplier
         m_Mode: 4
         m_Arguments:
@@ -264,19 +264,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3616132521624667536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8369733512582880615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f33819f2e8d644fdb5772ff5d0d70bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressBar: {fileID: 8369733512582880614}
 --- !u!1 &3616132522035784931
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +385,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameController, Scripts
+        m_TargetAssemblyTypeName: Controllers.Main_Game.GameController, Scripts
         m_MethodName: SetTimeSpeedMultiplier
         m_Mode: 4
         m_Arguments:
@@ -502,7 +489,7 @@ GameObject:
   - component: {fileID: 3616132522810115419}
   - component: {fileID: 3616132522810115416}
   m_Layer: 5
-  m_Name: UI
+  m_Name: Main UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -710,7 +697,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameController, Scripts
+        m_TargetAssemblyTypeName: Controllers.Main_Game.GameController, Scripts
         m_MethodName: SetTimeSpeedMultiplier
         m_Mode: 4
         m_Arguments:
@@ -1227,6 +1214,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: FF1
+--- !u!114 &3616132521624667536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369733512582880615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f33819f2e8d644fdb5772ff5d0d70bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 8369733512582880614}
 --- !u!1001 &3616132521451108563
 PrefabInstance:
   m_ObjectHideFlags: 0
